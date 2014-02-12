@@ -1,3 +1,30 @@
+startup-notification (0.12-1) unstable; urgency=low
+
+  * Add Vcs-{Svn,Browser} control fields.
+  * New upstream release
+    + reverts ABI breakage from 0.11 (closes: #626717)
+  * Add a symbols file.
+
+ -- Julien Cristau <jcristau@debian.org>  Wed, 18 May 2011 20:13:25 +0200
+
+startup-notification (0.11-2) unstable; urgency=low
+
+  * Add missing build-dependency on libx11-xcb-dev.
+
+ -- Julien Cristau <jcristau@debian.org>  Sat, 14 May 2011 16:08:34 +0200
+
+startup-notification (0.11-1) unstable; urgency=low
+
+  * Fix watch file to point at freedesktop.org.
+  * New upstream release (closes: #625882)
+  * Build-depend on libxcb-util0-dev instead of the obsolete libxcb-atom1-dev,
+    libxcb-aux0-dev and libxcb-event1-dev (closes: #626670).
+  * Update debian/copyright with missing copyright notices and MIT license.
+  * Bump Standards-Version to 3.9.2, no changes needed.
+  * Bump shlibs to 0.11 for APPLICATION_ID key support.
+
+ -- Julien Cristau <jcristau@debian.org>  Sat, 14 May 2011 15:36:45 +0200
+
 startup-notification (0.10-1) unstable; urgency=low
 
   [ Kilian Krause ]

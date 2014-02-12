@@ -13,3 +13,5 @@ LDFLAGS += -Wl,-z,defs
 
 # Speed up loading.
 LDFLAGS += -Wl,-O1
+
+DEB_DH_MAKESHLIBS_ARGS_ALL = -- -c4
