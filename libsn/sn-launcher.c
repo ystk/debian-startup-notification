@@ -44,6 +44,7 @@ struct SnLauncherContext
   char               *wmclass;
   char               *binary_name;
   char               *icon_name;
+  char               *application_id;
   struct timeval      initiation_time;
   unsigned int        completed : 1;
   unsigned int        canceled : 1;
@@ -77,6 +78,7 @@ sn_launcher_context_new (SnDisplay           *display,
 
   context->refcount = 1;
   context->display = display;
+  context->screen = screen;
   sn_display_ref (context->display);
 
   context->workspace = -1;
@@ -121,6 +123,7 @@ sn_launcher_context_unref (SnLauncherContext *context)
       sn_free (context->wmclass);
       sn_free (context->binary_name);
       sn_free (context->icon_name);
+      sn_free (context->application_id);
 
       sn_display_unref (context->display);
       sn_free (context);
@@ -266,9 +269,16 @@ sn_launcher_context_initiate (SnLauncherContext *context,
       values[i] = context->icon_name;
       ++i;
     }
-  
+
+  if (context->application_id != NULL)
+    {
+      names[i] = "APPLICATION_ID";
+      values[i] = context->application_id;
+      ++i;
+    }
+
   assert (i < MAX_PROPS);
-  
+
   names[i] = NULL;
   values[i] = NULL;
 
@@ -280,8 +290,8 @@ sn_launcher_context_initiate (SnLauncherContext *context,
   
   sn_internal_broadcast_xmessage (context->display,
                                   context->screen,
-                                  "_NET_STARTUP_INFO",
-                                  "_NET_STARTUP_INFO_BEGIN",
+                                  sn_internal_get_net_startup_info_atom(context->display),
+                                  sn_internal_get_net_startup_info_begin_atom(context->display),
                                   message);
 
   sn_free (message);
@@ -312,8 +322,8 @@ sn_launcher_context_complete (SnLauncherContext *context)
 
   sn_internal_broadcast_xmessage (context->display,
                                   context->screen,
-                                  "_NET_STARTUP_INFO",
-                                  "_NET_STARTUP_INFO_BEGIN",
+                                  sn_internal_get_net_startup_info_atom(context->display),
+                                  sn_internal_get_net_startup_info_begin_atom(context->display),
                                   message);
 
   sn_free (message);
@@ -430,6 +440,16 @@ sn_launcher_context_set_icon_name (SnLauncherContext *context,
 
   sn_free (context->icon_name);
   context->icon_name = sn_internal_strdup (name);
+}
+
+void
+sn_launcher_set_application_id (SnLauncherContext *context,
+                                const char        *desktop_file)
+{
+  WARN_ALREADY_INITIATED (context);
+
+  sn_free (context->application_id);
+  context->application_id = sn_internal_strdup (desktop_file);
 }
 
 void

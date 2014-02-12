@@ -1,3 +1,14 @@
+0.12
+====
+
+ - Revert a change that break ABI (Julien Cristau)
+
+0.11
+====
+
+ - Remove Xlib support, use only xcb and x11-xcb (Julien Danjou)
+ - Support APPLICATION_ID key (Colin Walters)
+
 0.10
 ====
 
