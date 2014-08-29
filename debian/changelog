@@ -1,3 +1,26 @@
+startup-notification (0.12-3) unstable; urgency=low
+
+  * Team upload
+  * Merge from experimental
+  * Add a reference to #642418 in the 0.12-2 changelog
+  * Standards-Version: 3.9.4 (no changes needed)
+  * Build-depend on autotools-dev to update config.guess, config.sub
+  * Add Lintian overrides for package-name-doesnt-match-sonames,
+    symbols-declares-dependency-on-other-package
+
+ -- Simon McVittie <smcv@debian.org>  Mon, 20 May 2013 09:17:58 +0100
+
+startup-notification (0.12-2) experimental; urgency=low
+
+  * Team upload
+  * Upgrade to debhelper 9, for compressed debug symbols (when added)
+  * Convert to multi-arch (based on Riku Voipio's work in Ubuntu;
+    Closes: #642418, LP: #910856)
+  * Use 3.0 (quilt) format instead of CDBS simple-patchsys
+    (there are currently no patches anyway)
+
+ -- Simon McVittie <smcv@debian.org>  Thu, 25 Oct 2012 13:18:31 +0100
+
 startup-notification (0.12-1) unstable; urgency=low
 
   * Add Vcs-{Svn,Browser} control fields.
