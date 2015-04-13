@@ -1,3 +1,12 @@
+startup-notification (0.12-4) unstable; urgency=medium
+
+  * Team upload.
+
+  [ Colin Watson ]
+  * Use dh-autoreconf to update libtool macros for new ports. (Closes: #732530)
+
+ -- Andreas Henriksson <andreas@fatal.se>  Sun, 31 Aug 2014 12:44:59 -0700
+
 startup-notification (0.12-3) unstable; urgency=low
 
   * Team upload
